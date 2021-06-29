@@ -9,5 +9,15 @@ export const HomeRoutes: RouteConfig = {
       name: "Home",
       component: () => import("@/modules/home/pages/Home.page.vue"),
     },
+    {
+      path: "/login",
+      name: "Login",
+      component: () => import("@/modules/home/pages/Login.page.vue"),
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: () => import("@/modules/home/pages/Register.page.vue"),
+    },
   ],
 };

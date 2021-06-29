@@ -8,7 +8,7 @@
       style="min-height: 100vh"
     >
       <v-flex xs12 sm8 md6 class="px-md-5">
-        <div class="white--text">
+        <div class="white--text py-3">
           <h1 class="my-3">
             <strong>Administrar tu negocio nunca habia sido tan facil.</strong>
           </h1>
@@ -17,12 +17,16 @@
             puerta de tu casa. Create una cuenta, si aun no lo has hecho.
           </p>
         </div>
-        <br />
-        <v-btn rounded large class="primary--text ma-2">
+        <v-btn
+          :to="{ name: 'Register' }"
+          rounded
+          large
+          class="primary--text ma-2"
+        >
           <v-icon class="mr-2">mdi-account</v-icon>
           <span>Crear una cuenta</span>
         </v-btn>
-        <v-btn text color="white" large class="ma-2">
+        <v-btn :to="{ name: 'Login' }" text color="white" large class="ma-2">
           <v-icon class="mr-2">mdi-login</v-icon>
           <span>Iniciar sesion</span>
         </v-btn>
