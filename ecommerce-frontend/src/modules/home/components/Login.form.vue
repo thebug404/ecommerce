@@ -29,9 +29,15 @@
     <v-btn @click="login" color="purple" :disabled="!valid" rounded block dark
       >Iniciar sesion</v-btn
     >
-    <div class="text-center pt-5">
-      <router-link to="/" class="purple--text">
-        <span class="">¿Has olvidado la contraseña?</span>
+    <div class="pt-5">
+      <router-link to="/" class="purple--text text-decoration-none">
+        <small>¿Has olvidado la contraseña?</small>
+      </router-link>
+      <router-link
+        :to="{ name: 'Register' }"
+        class="purple--primary text-decoration-none"
+      >
+        <small> ¿Aun no poseo una cuenta?</small>
       </router-link>
     </div>
   </v-form>
