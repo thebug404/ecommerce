@@ -1,1 +1,25 @@
 ecommerce-backend/node_modules
+
+ecommerce-frontend/.DS_Store
+ecommerce-frontend/node_modules
+ecommerce-frontend/dist
+
+# local env files
+ecommerce-frontend/.env.local
+ecommerce-frontend/.env.*.local
+
+# Log files
+ecommerce-frontend/npm-debug.log*
+ecommerce-frontend/yarn-debug.log*
+ecommerce-frontend/yarn-error.log*
+ecommerce-frontend/pnpm-debug.log*
+
+# Editor directories and files
+ecommerce-frontend/.idea
+ecommerce-frontend/.vscode
+ecommerce-frontend/*.suo
+ecommerce-frontend/*.ntvs*
+ecommerce-frontend/*.njsproj
+ecommerce-frontend/*.sln
+ecommerce-frontend/*.sw?
+
