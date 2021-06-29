@@ -1,0 +1,31 @@
+{
+    "host": "localhost",
+    "port": 3030,
+    "paginate": {
+        "default": 10,
+        "max": 50
+    },
+    "authentication": {
+        "entity": "user",
+        "service": "/api/users",
+        "secret": "5pxppBloduo8eOagmjFXNmi2VS4=",
+        "authStrategies": [
+            "jwt",
+            "local"
+        ],
+        "jwtOptions": {
+            "header": {
+                "typ": "access"
+            },
+            "audience": "http://ecommerce.com",
+            "issuer": "feathers",
+            "algorithm": "HS256",
+            "expiresIn": "1d"
+        },
+        "local": {
+            "usernameField": "email",
+            "passwordField": "password"
+        }
+    },
+    "mongodb": "mongodb://localhost/ecommerce"
+}
