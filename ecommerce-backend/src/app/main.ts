@@ -12,6 +12,7 @@ export class EcommerceServer {
         this.server = http.createServer(this.app);
 
         this.middlewares();
+        this.errors();
     }
 
     private middlewares(): void {
@@ -19,6 +20,11 @@ export class EcommerceServer {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.configure(express.rest());
         this.app.use(morgan("dev"));
+    }
+
+    private errors(): void {
+        this.app.use(express.notFound());
+        this.app.use(express.errorHandler({ html: false }));
     }
 
     run(): void {
