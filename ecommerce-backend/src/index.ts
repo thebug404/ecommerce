@@ -1,1 +1,4 @@
-console.log("Hello world 🔥!");
+import { EcommerceServer } from "./app/main";
+
+const ecommerce: EcommerceServer = new EcommerceServer;
+ecommerce.run();
