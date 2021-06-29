@@ -2,6 +2,11 @@ export const rules = {
   required: (value: string | number): boolean | string =>
     !!value || "Este campo es requerido.",
 
+  name: (value: string): boolean | string =>
+    /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ'])?$/.test(
+      value
+    ) || "El nombre es invalido.",
+
   email: (value: string): boolean | string =>
     /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g.test(value) || "El email es invalido.",
 
