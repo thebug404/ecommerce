@@ -12,13 +12,16 @@
   "dependencies": {
     "@feathersjs/authentication": "^4.5.11",
     "@feathersjs/authentication-local": "^4.5.11",
+    "@feathersjs/authentication-oauth": "^4.5.11",
     "@feathersjs/configuration": "^4.5.11",
     "@feathersjs/express": "^4.5.11",
     "@feathersjs/feathers": "^4.5.11",
     "feathers-mongoose": "^8.3.3",
+    "mongoose": "^5.13.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.2",
     "nodemon": "^2.0.7"
   }

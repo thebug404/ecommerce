@@ -1,0 +1,9 @@
+### Login
+POST http://localhost:3030/api/auth
+Content-Type: application/json
+
+{
+    "strategy": "local",
+    "email": "ivanzaldivar0@gmail.com",
+    "password": "Holahola123@"
+}

@@ -1,0 +1,10 @@
+### Create a new user
+POST http://localhost:3030/api/users
+Content-Type: application/json
+
+{
+    "first_name": "Nelson Ivan",
+    "last_name": "Guevara Morales",
+    "email": "ivanzaldivar16@gmail.com",
+    "password": "Holahola123@"
+}

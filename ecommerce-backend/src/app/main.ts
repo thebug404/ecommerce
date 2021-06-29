@@ -6,6 +6,10 @@ import morgan from "morgan";
 
 import database from "./config/database";
 
+import authentication from "./auth/authentication";
+
+import services from "./components/index";
+
 export class EcommerceServer {
     readonly app: Application;
     readonly server: Server;
@@ -16,6 +20,8 @@ export class EcommerceServer {
 
         this.config();
         this.middlewares();
+        this.authentication();
+        this.services();
         this.errors();
     }
 
@@ -28,6 +34,14 @@ export class EcommerceServer {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.configure(express.rest());
         this.app.use(morgan("dev"));
+    }
+
+    private authentication(): void {
+        this.app.configure(authentication);
+    }
+
+    private services(): void {
+        this.app.configure(services);
     }
 
     private errors(): void {
