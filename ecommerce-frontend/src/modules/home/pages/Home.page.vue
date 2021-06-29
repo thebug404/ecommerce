@@ -28,7 +28,7 @@
         </v-btn>
       </v-flex>
       <v-flex xs12 sm8 md6 class="text-center">
-        <img src="../assets/banner.svg" width="80%" alt="" />
+        <img :src="require('@/assets/banner.svg')" width="80%" alt="" />
       </v-flex>
     </v-layout>
   </v-sheet>
