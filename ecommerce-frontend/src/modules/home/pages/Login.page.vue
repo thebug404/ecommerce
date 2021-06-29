@@ -9,13 +9,14 @@
                 <div>
                   <img
                     :src="require('@/assets/login.svg')"
-                    width="100%"
                     alt="Login banner"
+                    class="mb-5"
+                    width="100%"
                   />
-                  <p class="pa-0 ma-0 white--text mt-3">
+                  <span class="white--text">
                     © {{ new Date().getFullYear() }} Ecommerce.Todos los
                     derechos reservados.
-                  </p>
+                  </span>
                 </div>
               </div>
             </v-flex>

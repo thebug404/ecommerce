@@ -1,24 +1,34 @@
 <template>
-  <v-form>
+  <v-form ref="form" v-model="valid" lazy-validation>
     <v-text-field
       outlined
+      required
       autofocus
+      class="my-2"
       label="Email"
       color="purple"
       autocomplete="off"
+      v-model="data.email"
       placeholder="Ejem: abc@gmail.com"
       prepend-inner-icon="mdi-account-circle"
+      :rules="[rules.required, rules.email]"
     ></v-text-field>
     <v-text-field
       outlined
+      required
       autofocus
+      class="my-2"
       color="purple"
       type="password"
       label="Contraseña"
       autocomplete="off"
+      v-model="data.password"
       prepend-inner-icon="mdi-lock"
+      :rules="[rules.required, rules.password]"
     ></v-text-field>
-    <v-btn color="purple" rounded block dark>Iniciar sesion</v-btn>
+    <v-btn @click="login" color="purple" :disabled="!valid" rounded block dark
+      >Iniciar sesion</v-btn
+    >
     <div class="text-center pt-5">
       <router-link to="/" class="purple--text">
         <span class="">¿Has olvidado la contraseña?</span>
@@ -31,6 +41,16 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
+import { rules as myRules } from "@/core/dump/rules";
+
 @Component
-export default class LoginFormComponent extends Vue {}
+export default class LoginFormComponent extends Vue {
+  data = { email: "", password: "" };
+  readonly rules = myRules;
+  valid = false;
+
+  async login(): Promise<void> {
+    console.log(this.data);
+  }
+}
 </script>
