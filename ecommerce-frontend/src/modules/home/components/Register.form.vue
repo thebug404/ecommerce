@@ -31,6 +31,7 @@
           label="Email"
           autocomplete="off"
           v-model="data.email"
+          :error-messages="errorMessage"
           :rules="[rules.required, rules.email]"
           prepend-inner-icon="mdi-account-circle"
         ></v-text-field>
@@ -65,14 +66,27 @@ import Component from "vue-class-component";
 
 import { rules as myRules } from "@/core/dump/rules";
 
+import { ParamsCreateUser } from "../../../core/services/users/user.service";
+
+import authStore from "../../../store/modules/auth.modules";
+
 @Component
 export default class RegisterFormComponent extends Vue {
-  data = { first_name: "", last_name: "", email: "", password: "" };
+  data: ParamsCreateUser = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  };
   readonly rules = myRules;
   valid = false;
 
-  register(): void {
-    console.log("Register: ", this.data);
+  async register(): Promise<void> {
+    await authStore.signup(this.data);
+  }
+
+  get errorMessage(): string | undefined {
+    return authStore.error?.message;
   }
 }
 </script>

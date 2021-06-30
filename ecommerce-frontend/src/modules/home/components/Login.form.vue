@@ -9,6 +9,7 @@
       color="purple"
       autocomplete="off"
       v-model="data.email"
+      :error-messages="errorMessage"
       placeholder="Ejem: abc@gmail.com"
       prepend-inner-icon="mdi-account-circle"
       :rules="[rules.required, rules.email]"
@@ -24,6 +25,7 @@
       autocomplete="off"
       v-model="data.password"
       prepend-inner-icon="mdi-lock"
+      :error-messages="errorMessage"
       :rules="[rules.required, rules.password]"
     ></v-text-field>
     <v-btn @click="login" color="purple" :disabled="!valid" rounded block dark
@@ -49,7 +51,7 @@ import Component from "vue-class-component";
 
 import { rules as myRules } from "@/core/dump/rules";
 
-import { AuthService } from "../../../core/services/auth/auth.service";
+import authStore from "../../../store/modules/auth.modules";
 
 @Component
 export default class LoginFormComponent extends Vue {
@@ -58,12 +60,11 @@ export default class LoginFormComponent extends Vue {
   valid = false;
 
   async login(): Promise<void> {
-    try {
-      const result = await new AuthService().login(this.data.email, this.data.password);
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
+    await authStore.login(this.data);
+  }
+
+  get errorMessage(): string | undefined {
+    return authStore.error?.message;
   }
 }
 </script>
