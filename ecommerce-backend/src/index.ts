@@ -1,5 +1,5 @@
-import { EcommerceServer } from "./app/main";
+import app from "./app/main";
 
-const ecommerce: EcommerceServer = new EcommerceServer;
-ecommerce.run();
-ecommerce.database();
+app.listen(3030).on("listening", () => {
+    console.log("App execute in http://localhost:3030");
+});

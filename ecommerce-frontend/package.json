@@ -9,7 +9,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@feathersjs/authentication-client": "^4.5.11",
+    "@feathersjs/feathers": "^4.5.11",
+    "@feathersjs/rest-client": "^4.5.11",
+    "@feathersjs/socketio-client": "^4.4.3",
     "core-js": "^3.6.5",
+    "socket.io-client": "^2.3.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",

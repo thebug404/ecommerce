@@ -1,61 +1,30 @@
-import express, { Application } from "@feathersjs/express";
 import configuration from "@feathersjs/configuration";
 import feathers from "@feathersjs/feathers";
-import http, { Server } from "http";
+import socketio from "@feathersjs/socketio";
+import express from "@feathersjs/express";
 import morgan from "morgan";
 
+import authentication from "./auth/authentication";
+import services from "./components/index";
 import database from "./config/database";
 
-import authentication from "./auth/authentication";
+const app = express(feathers());
 
-import services from "./components/index";
+app.configure(configuration());
 
-export class EcommerceServer {
-    readonly app: Application;
-    readonly server: Server;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
+app.configure(express.rest());
+app.configure(socketio());
 
-    constructor() {
-        this.app = express(feathers());
-        this.server = http.createServer(this.app);
+app.configure(services);
 
-        this.config();
-        this.middlewares();
-        this.authentication();
-        this.services();
-        this.errors();
-    }
+app.configure(authentication);
 
-    private config(): void {
-        this.app.configure(configuration());
-    }
+app.use(express.notFound());
+app.use(express.errorHandler({ html: false }));
 
-    private middlewares(): void {
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: true }));
-        this.app.configure(express.rest());
-        this.app.use(morgan("dev"));
-    }
+app.configure(database);
 
-    private authentication(): void {
-        this.app.configure(authentication);
-    }
-
-    private services(): void {
-        this.app.configure(services);
-    }
-
-    private errors(): void {
-        this.app.use(express.notFound());
-        this.app.use(express.errorHandler({ html: false }));
-    }
-
-    database(): void {
-        this.app.configure(database);
-    }
-
-    run(): void {
-        this.server.listen(3030).on("listening", () => {
-            console.log("App execute http://localhost:3030");
-        });
-    }
-}
+export default app;
