@@ -63,7 +63,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import { rules as myRules } from "../../../core/dump/rules";
+import { rules as myRules } from "@/core/dump/rules";
 
 @Component
 export default class RegisterFormComponent extends Vue {
@@ -72,7 +72,7 @@ export default class RegisterFormComponent extends Vue {
   valid = false;
 
   register(): void {
-    console.log(this.data);
+    console.log("Register: ", this.data);
   }
 }
 </script>

@@ -56,7 +56,7 @@ export default class LoginFormComponent extends Vue {
   valid = false;
 
   async login(): Promise<void> {
-    console.log(this.data);
+    console.log("Login: ", this.data);
   }
 }
 </script>
