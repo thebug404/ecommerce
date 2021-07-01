@@ -1,25 +1,12 @@
-import { Params, ServiceMethods } from "@feathersjs/feathers";
-import { BadRequest } from "@feathersjs/errors";
+import { ServiceMethods } from "@feathersjs/feathers";
+import { User } from "../users/user.controller";
 
-import { SenderEmail } from "./strategies/VerifySingUp.strategy";
-
-export interface Mailer {
-    from: string;
-    to: string;
-    subject: string;
-    text?: string;
-    html?: string;
+export interface EmailPostman {
+    send(): Promise<any>;
 }
 
-export class MailerController implements Partial<ServiceMethods<Mailer>> {
-    async create(data: Mailer, params: Params) {
-        const options = params.query as { strategy: SenderEmail };
-        const [result, error] = await options.strategy.send(data);
-        if (error) throw new BadRequest({
-            name: "EmailSendingError",
-            message: "El email no fue despachado."
-        });
-
-        return result;
+export class MailerController implements Partial<ServiceMethods<EmailPostman>> {
+    async create(data: EmailPostman): Promise<EmailPostman> {
+        return await data.send();
     }
 }

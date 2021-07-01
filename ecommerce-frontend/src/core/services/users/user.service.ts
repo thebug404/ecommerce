@@ -16,6 +16,7 @@ export interface User extends Omit<ParamsCreateUser, "password"> {
   last_name: string;
   email: string;
   role: string;
+  isVerified: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

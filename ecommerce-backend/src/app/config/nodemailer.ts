@@ -1,4 +1,4 @@
-import { Application } from "@feathersjs/feathers";
+import { Application } from "@feathersjs/express";
 import nodemailer from "nodemailer";
 
 export default function (app: Application) {
