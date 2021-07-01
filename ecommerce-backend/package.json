@@ -18,16 +18,21 @@
     "@feathersjs/feathers": "^4.5.11",
     "@feathersjs/socketio": "^4.5.11",
     "cors": "^2.8.5",
+    "feathers-authentication-management": "^3.1.0",
+    "feathers-authentication-management-ts": "^2.1.2",
+    "feathers-hooks-common": "^5.0.6",
     "feathers-mongoose": "^8.3.3",
     "helmet": "^4.6.0",
     "mongoose": "^5.13.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
     "@types/helmet": "^4.0.0",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.2",
+    "@types/nodemailer": "^6.4.2",
     "nodemon": "^2.0.7"
   }
 }

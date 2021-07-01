@@ -19,5 +19,10 @@ export const HomeRoutes: RouteConfig = {
       name: "Register",
       component: () => import("@/modules/home/pages/Register.page.vue"),
     },
+    {
+      path: "/verify/:token?",
+      name: "Verify",
+      component: () => import("./pages/VerifyEmail.page.vue"),
+    },
   ],
 };

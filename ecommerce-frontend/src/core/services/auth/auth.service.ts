@@ -1,5 +1,6 @@
 import app from "@/core/config/feathers";
 import { FeathersError } from "@/core/interfaces/general.interfaces";
+import { Service } from "@feathersjs/feathers";
 import { User } from "../users/user.service";
 
 export interface Credentials {
@@ -31,5 +32,13 @@ export class AuthService {
     } catch (error) {
       return [null, error];
     }
+  }
+
+  async verifySignUp(token: string) {
+    const service: Service<any> = app.service("authManagement");
+    return await service.create({
+      action: "verifySignupLong",
+      value: token
+    });
   }
 }

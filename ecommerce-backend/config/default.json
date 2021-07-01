@@ -27,5 +27,13 @@
             "passwordField": "password"
         }
     },
-    "mongodb": "mongodb://localhost/ecommerce"
+    "mongodb": "mongodb://localhost/ecommerce",
+    "mailer": {
+        "host": "smtp.mailtrap.io",
+        "port": 2525,
+        "auth": {
+          "user": "f3627fb92c01d7",
+          "pass": "46476cf8211cd7"
+        }
+    }
 }
