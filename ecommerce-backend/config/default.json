@@ -30,12 +30,11 @@
     "mongodb": "mongodb://localhost/ecommerce",
     "frontend_uri": "http://localhost:8080",
     "mailer": {
-        "host": "smtp.sendgrid.net",
-        "service": "SendGrid",
-        "port": 465,
+        "host": "smtp.mailtrap.io",
+        "port": 2525,
         "auth": {
-          "user": "apikey",
-          "pass": "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"
+          "user": "f3627fb92c01d7",
+          "pass": "46476cf8211cd7"
         }
     }
 }

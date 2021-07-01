@@ -9,9 +9,9 @@ import { strategies } from "../mailer/strategies/index.strategies";
 export function notifier(app: Application): Partial<Options> {
     return {
         service: "/api/users",
-        notifier: async function(type: Types, user: UserManagement) {
+        notifier: function(type: Types, user: UserManagement) {
             const strategy = strategies(app)[type] as Mailer | undefined;
-            return await strategy?.send(user as User);
+            strategy?.send(user as User);
         }
     };
 }
