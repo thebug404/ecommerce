@@ -3,11 +3,11 @@ import { BadRequest } from "@feathersjs/errors";
 
 import { User } from "../../components/users/user.controller";
 
-export async function isVerified({ app, data }: HookContext) {
-    const service: Service<User> = app.service("/api/users");
-
+export async function isVerified(context: HookContext) {
+    const service: Service<User> = context.app.service("/api/users");
+    
     const result = await service.find({
-        query: { email: data.email }
+        query: { email: context.data.email }
     }) as Paginated<User>;
 
     const user: User | undefined = result.data[0];

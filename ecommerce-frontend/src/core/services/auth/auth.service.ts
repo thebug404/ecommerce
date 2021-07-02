@@ -41,4 +41,8 @@ export class AuthService {
       value: token
     });
   }
+
+  async reAuthenticate(force = true): Promise<AuthResult> {
+    return await app.reAuthenticate(force) as AuthResult;
+  }
 }

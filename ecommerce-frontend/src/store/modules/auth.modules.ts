@@ -76,6 +76,16 @@ export class AuthStore extends VuexDecorators.VuexModule {
   }
 
   @VuexDecorators.Action
+  async reAuthenticate(force = true) {
+    try {
+      const data = await new AuthService().reAuthenticate(force);
+      this.context.commit("SET_CURRENT_USER", data.user);
+    } catch (error) {
+      this.context.commit("SET_ERROR", error);
+    }
+  }
+
+  @VuexDecorators.Action
   async verifySignUp(token: string): Promise<void> {
     this.context.commit("SET_LOADING", true);
 
