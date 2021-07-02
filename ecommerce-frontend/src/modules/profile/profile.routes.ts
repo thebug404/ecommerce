@@ -17,5 +17,11 @@ export const ProfileRoute: RouteConfig = {
       meta: { requiresAuth: true, roles: [Roles.Admin, Roles.Reader, Roles.Writer] },
       component: () => import("./pages/Products.page.vue"),
     },
+    {
+      path: "categories",
+      name: "Categories",
+      meta: { requiresAuth: true, roles: [Roles.Admin] },
+      component: () => import("./pages/Categories.page.vue")
+    }
   ],
 };
