@@ -8,6 +8,7 @@ export interface User extends AuthUser {
     last_name: string;
     email: string;
     password: string;
+    role: string;
     createdAt: Date;
     updateAt: Date;
 }
