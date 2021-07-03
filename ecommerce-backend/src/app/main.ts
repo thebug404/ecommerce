@@ -7,6 +7,7 @@ import morgan from "morgan";
 import authentication from "./auth/authentication";
 import services from "./components/index";
 import database from "./config/database";
+import { channels } from "./channels/channels";
 
 const app = express(feathers());
 
@@ -18,9 +19,11 @@ app.use(morgan("dev"));
 app.configure(express.rest());
 app.configure(socketio());
 
+app.configure(authentication);
+
 app.configure(services);
 
-app.configure(authentication);
+app.configure(channels);
 
 app.use(express.notFound());
 app.use(express.errorHandler({ html: false }));
