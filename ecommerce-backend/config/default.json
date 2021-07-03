@@ -17,7 +17,7 @@
             "header": {
                 "typ": "access"
             },
-            "audience": "http://ecommerce.com",
+            "audience": "http://fakeonegroup.com",
             "issuer": "feathers",
             "algorithm": "HS256",
             "expiresIn": "1d"
@@ -27,14 +27,14 @@
             "passwordField": "password"
         }
     },
-    "mongodb": "mongodb://localhost/ecommerce",
+    "mongodb": "mongodb://localhost/onegroup",
     "frontend_uri": "http://localhost:8080",
     "mailer": {
-        "host": "smtp.mailtrap.io",
-        "port": 2525,
+        "host": "",
+        "port": 0,
         "auth": {
-          "user": "f3627fb92c01d7",
-          "pass": "46476cf8211cd7"
+          "user": "",
+          "pass": ""
         }
     }
 }

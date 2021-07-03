@@ -32,15 +32,11 @@
       >Iniciar sesion</v-btn
     >
     <div class="pt-5">
-      <router-link to="/" class="purple--text text-decoration-none">
-        <small>¿Has olvidado la contraseña?</small>
-      </router-link>
       <router-link
         :to="{ name: 'Register' }"
-        class="purple--primary text-decoration-none"
+        class="purple--text text-decoration-none"
+        >¿Aun no poseo una cuenta?</router-link
       >
-        <small> ¿Aun no poseo una cuenta?</small>
-      </router-link>
     </div>
   </v-form>
 </template>
