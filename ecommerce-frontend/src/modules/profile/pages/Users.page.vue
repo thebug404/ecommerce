@@ -33,7 +33,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { Roles } from "../../../core/interfaces/general.interfaces";
 
-import { User } from "../../../core/services/users/user.service";
+import { User } from "../../../core/services/user.service";
 import authStore from "../../../store/modules/auth.store";
 
 import userStore from "../../../store/modules/user.store";

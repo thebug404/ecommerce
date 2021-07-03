@@ -31,7 +31,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import { Category } from "../../../core/services/categories/category.service";
+import { Category } from "../../../core/services/category.service";
 
 import categoryModule from "../../../store/modules/category.store";
 

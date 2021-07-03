@@ -32,7 +32,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import "vuetify";
 
-import authStore from "../../store/modules/auth.store";
+import authStore from "@/store/modules/auth.store";
 
 const UserCardProps = Vue.extend({
   props: { user: Object },

@@ -3,7 +3,7 @@ import store from "..";
 
 import { BasicOperationsCrud } from "./basic-crud.store";
 
-import { User, UserService } from "@/core/services/users/user.service";
+import { User, UserService } from "@/core/services/user.service";
 
 @Module({
   name: "users",

@@ -7,6 +7,7 @@ import { ProfileRoute } from "@/modules/profile/profile.routes";
 import authStore from "@/store/modules/auth.store";
 
 import { AuthService } from "@/core/services/auth/auth.service";
+import { User } from "@/core/services/user.service";
 
 Vue.use(VueRouter);
 
@@ -22,20 +23,18 @@ router.beforeEach(async (to, from, next) => {
   const { requiresAuth, roles } = to.meta || {};
   if (!requiresAuth) return next();
 
-  try {
-    let { currentUser } = authStore;
-    const authService = new AuthService();
-    currentUser = !currentUser
-      ? (await authService.reAuthenticate()).user
-      : currentUser;
+  let user: User | null = authStore.currentUser;
+  const authService = new AuthService();
 
-    if (requiresAuth && roles.indexOf(currentUser.role) >= 0) {
-      if (to.meta) to.meta.role = currentUser.role;
-      return next();
-    }
-  } catch (error) {
-    return next({ name: "Login" });
+  if (!authStore.currentUser) {
+    const [res, error] = await authService.reAuthenticate();
+    if (error) return next({ name: "Login" });
+    user = res?.user as User;
   }
+
+  if (requiresAuth && roles.indexOf(user?.role) >= 0) return next();
+
+  return next({ name: "Login" });
 });
 
 export default router;

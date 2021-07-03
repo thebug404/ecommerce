@@ -41,7 +41,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import "vue-router";
 
-import authModules from "../../../store/modules/auth.store";
+import authModules from "@/store/modules/auth.store";
 
 @Component
 export default class VerifyEmailPage extends Vue {

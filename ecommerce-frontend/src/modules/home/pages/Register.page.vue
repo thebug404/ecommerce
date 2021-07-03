@@ -39,7 +39,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 import RegisterFormComponent from "../components/Register.form.vue";
-import GeneralDialogComponent from "../../../core/components/general-dialog.component.vue";
+import GeneralDialogComponent from "@/core/components/general-dialog.component.vue";
 
 @Component({
   components: { RegisterFormComponent, GeneralDialogComponent },

@@ -69,7 +69,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import { Category } from "../../../core/services/categories/category.service";
+import { Category } from "../../../core/services/category.service";
 
 import { rules as myRules } from "../../../core/dump/rules";
 import { Product } from "../../../core/services/product.service";

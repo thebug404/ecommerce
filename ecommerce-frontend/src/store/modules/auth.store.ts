@@ -2,15 +2,11 @@ import * as VuexDecorators from "vuex-module-decorators";
 import router from "@/router";
 import store from "../index";
 
+import { GeneralDialog } from "@/core/interfaces/components.interfaces";
 import { FeathersError } from "@/core/interfaces/general.interfaces";
 
-import {
-  ParamsCreateUser,
-  User,
-  UserService,
-} from "@/core/services/users/user.service";
 import { AuthService, Credentials } from "@/core/services/auth/auth.service";
-import { GeneralDialog } from "@/core/interfaces/components.interfaces";
+import * as ServiceUser from "@/core/services/user.service";
 
 @VuexDecorators.Module({
   name: "auth",
@@ -19,8 +15,9 @@ import { GeneralDialog } from "@/core/interfaces/components.interfaces";
   store,
 })
 export class AuthStore extends VuexDecorators.VuexModule {
+  private authService: AuthService = new AuthService();
   error: FeathersError | null = null;
-  currentUser: User | null = null;
+  currentUser: ServiceUser.User | null = null;
   loading = false;
   generalDialog: Partial<GeneralDialog> = {
     status: false,
@@ -28,7 +25,7 @@ export class AuthStore extends VuexDecorators.VuexModule {
   };
 
   @VuexDecorators.Mutation
-  SET_CURRENT_USER(user: User): void {
+  SET_CURRENT_USER(user: ServiceUser.User): void {
     this.error = null;
     this.currentUser = user;
   }
@@ -56,8 +53,8 @@ export class AuthStore extends VuexDecorators.VuexModule {
   }
 
   @VuexDecorators.Action
-  async signup(data: ParamsCreateUser): Promise<void> {
-    const userService: UserService = new UserService();
+  async signup(data: ServiceUser.ParamsCreateUser): Promise<void> {
+    const userService = new ServiceUser.UserService();
 
     const [user, error] = await userService.create(data);
     if (error) return this.context.commit("SET_ERROR", error);
@@ -73,9 +70,10 @@ export class AuthStore extends VuexDecorators.VuexModule {
 
   @VuexDecorators.Action
   async login(data: Credentials): Promise<void> {
-    const service = new AuthService();
-
-    const [result, error] = await service.login(data.email, data.password);
+    const [result, error] = await this.authService.login(
+      data.email,
+      data.password
+    );
     if (error) return this.context.commit("SET_ERROR", error);
 
     this.context.commit("SET_CURRENT_USER", result?.user);
@@ -84,39 +82,35 @@ export class AuthStore extends VuexDecorators.VuexModule {
 
   @VuexDecorators.Action
   async reAuthenticate(force = true): Promise<void> {
-    try {
-      const data = await new AuthService().reAuthenticate(force);
-      this.context.commit("SET_CURRENT_USER", data.user);
-    } catch (error) {
-      this.context.commit("SET_ERROR", error);
-    }
+    const [data, error] = await this.authService.reAuthenticate(force);
+    if (!data) return this.context.commit("SET_ERROR", error);
+
+    this.context.commit("SET_CURRENT_USER", data.user);
   }
 
   @VuexDecorators.Action
   async verifySignUp(token: string): Promise<void> {
     this.context.commit("SET_LOADING", true);
 
-    try {
-      const service = new AuthService();
-      const data = await service.verifySignUp(token);
-
-      this.context.commit("SET_CURRENT_USER", data);
-      this.context.commit("SET_LOADING", false);
-    } catch (error) {
+    const [data, error] = await this.authService.verifySignUp(token);
+    if (!data) {
       this.context.commit("SET_ERROR", error);
       this.context.commit("SET_LOADING", false);
     }
+
+    this.context.commit("SET_CURRENT_USER", data);
+    this.context.commit("SET_LOADING", false);
   }
 
   @VuexDecorators.Action
   async logout(): Promise<void> {
-    try {
-      await new AuthService().logout();
-      router.replace({ name: "Login" });
-      setTimeout(() => this.context.commit("SET_LOGOUT"), 1000);
-    } catch (error) {
-      console.error(error);
-    }
+    // Logout
+    const [data, error] = await this.authService.logout();
+    if (!data) console.error(error);
+
+    // change route
+    router.replace({ name: "Login" });
+    setTimeout(() => this.context.commit("SET_LOGOUT"), 1000);
   }
 }
 

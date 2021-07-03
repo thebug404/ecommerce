@@ -1,7 +1,7 @@
 import * as VuexDecorators from "vuex-module-decorators";
 import store from "..";
 
-import * as ServiceCategory from "../../core/services/categories/category.service";
+import * as ServiceCategory from "../../core/services/category.service";
 
 import { BasicOperationsCrud } from "./basic-crud.store";
 

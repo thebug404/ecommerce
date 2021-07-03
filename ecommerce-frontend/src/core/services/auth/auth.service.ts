@@ -2,7 +2,8 @@ import { Service } from "@feathersjs/feathers";
 import app from "@/core/config/feathers";
 
 import { FeathersError } from "@/core/interfaces/general.interfaces";
-import { User } from "../users/user.service";
+import { User } from "../user.service";
+import { standarizePromise } from "@/core/helpers/standarizePromise";
 
 export interface Credentials {
   email: string;
@@ -23,31 +24,31 @@ export class AuthService {
     email: string,
     password: string
   ): Promise<[AuthResult | null, FeathersError | null]> {
-    try {
-      const result = (await app.authenticate({
+    return await standarizePromise(
+      app.authenticate({
         strategy: "local",
         email,
         password,
-      })) as AuthResult;
-      return [result, null];
-    } catch (error) {
-      return [null, error];
-    }
+      }) as Promise<AuthResult>
+    );
   }
 
   async verifySignUp(token: string) {
     const service: Service<any> = app.service("authManagement");
-    return await service.create({
-      action: "verifySignupLong",
-      value: token,
-    });
+    return await standarizePromise(
+      service.create({ action: "verifySignupLong", value: token })
+    );
   }
 
-  async reAuthenticate(force = true): Promise<AuthResult> {
-    return (await app.reAuthenticate(force)) as AuthResult;
+  async reAuthenticate(
+    force = true
+  ): Promise<[AuthResult | null, FeathersError | null]> {
+    return await standarizePromise(
+      app.reAuthenticate(force) as Promise<AuthResult>
+    );
   }
 
-  async logout(): Promise<AuthResult> {
-    return (await app.authentication.logout()) as AuthResult;
+  async logout(): Promise<[AuthResult | null, FeathersError | null]> {
+    return await standarizePromise(app.logout() as Promise<AuthResult>);
   }
 }
