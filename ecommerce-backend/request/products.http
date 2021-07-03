@@ -1,16 +1,15 @@
 ### Create a new product
 POST http://localhost:3030/api/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2MjUyNDczODcsImV4cCI6MTYyNTMzMzc4NywiYXVkIjoiaHR0cDovL2Vjb21tZXJjZS5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6IjYwZGU0NWJkMDc3ODE5MWRlOGRiNDYyYiIsImp0aSI6IjJkOTkzZWUyLTc0OTAtNDI5MS1hOGRhLTBjM2Q2MDFhZDI1NyJ9.DHGfvCJwA9vyKYrSLW1z1wQgcgYGYe3rRC0cDLFEwR0
+Authorization: Bearer <token>
 
 {
-    "title": "Microsoft computer",
-    "description": "Esta es una descripcion de una computadora de Microsft",
-    "image": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4H2h7?ver=2af5&w=498&h=408&q=90&m=6&b=%23FFF0F0F0&f=jpg&o=f&p=0&aim=true",
-    "categoriesIds": ["60df47d243e36546b4709a8c", "60df5ee2b9b4432a14db210a", "60df47e243e36546b4709a8f"],
-    "price": 3452.80
+    "title": "",
+    "description": "",
+    "image": "",
+    "price": 0
 }
 
 ### Get lis products
 GET http://localhost:3030/api/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE2MjUyNDczODcsImV4cCI6MTYyNTMzMzc4NywiYXVkIjoiaHR0cDovL2Vjb21tZXJjZS5jb20iLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6IjYwZGU0NWJkMDc3ODE5MWRlOGRiNDYyYiIsImp0aSI6IjJkOTkzZWUyLTc0OTAtNDI5MS1hOGRhLTBjM2Q2MDFhZDI1NyJ9.DHGfvCJwA9vyKYrSLW1z1wQgcgYGYe3rRC0cDLFEwR0
+Authorization: Bearer <token>

@@ -4,6 +4,6 @@ Content-Type: application/json
 
 {
     "strategy": "local",
-    "email": "jonathan888@gmail.com",
-    "password": "Holahola123@"
+    "email": "",
+    "password": ""
 }
