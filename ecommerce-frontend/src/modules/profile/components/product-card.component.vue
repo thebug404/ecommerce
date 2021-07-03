@@ -13,7 +13,7 @@
             }}</v-card-subtitle>
           </div>
           <v-spacer></v-spacer>
-          <div class="text-center">
+          <div v-permissions="['ADMIN', 'WRITER']">
             <v-menu offset-y>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn icon color="grey" class="mt-4" v-bind="attrs" v-on="on">

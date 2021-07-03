@@ -14,17 +14,38 @@
     <v-card-subtitle class="d-block text-center">{{
       user.email
     }}</v-card-subtitle>
+    <v-card-actions class="pt-0">
+      <v-spacer></v-spacer>
+      <v-btn @click="logout" icon color="error" class="mx-2">
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
+      <v-btn @click="changeTeam" icon class="mx-2">
+        <v-icon>mdi-lamp</v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+    </v-card-actions>
   </v-card>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component';
+import Vue from "vue";
+import Component from "vue-class-component";
+import "vuetify";
+
+import authStore from "../../store/modules/auth.store";
 
 const UserCardProps = Vue.extend({
-    props: { user: Object }
-})
+  props: { user: Object },
+});
 
 @Component
-export default class UserCardComponent extends UserCardProps {}
+export default class UserCardComponent extends UserCardProps {
+  changeTeam(): void {
+    this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+  }
+
+  logout(): void {
+    authStore.logout();
+  }
+}
 </script>

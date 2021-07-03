@@ -6,6 +6,10 @@ import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
 
+import { permissionsDirective } from "./core/directives/permissions.directive";
+
+Vue.directive("permissions", permissionsDirective);
+
 new Vue({
   router,
   store,

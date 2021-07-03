@@ -29,6 +29,7 @@ export class AuthStore extends VuexDecorators.VuexModule {
 
   @VuexDecorators.Mutation
   SET_CURRENT_USER(user: User): void {
+    this.error = null;
     this.currentUser = user;
   }
 
@@ -46,6 +47,12 @@ export class AuthStore extends VuexDecorators.VuexModule {
   @VuexDecorators.Mutation
   SET_LOADING(loading = false): void {
     this.loading = loading;
+  }
+
+  @VuexDecorators.Mutation
+  SET_LOGOUT(): void {
+    this.error = null;
+    this.currentUser = null;
   }
 
   @VuexDecorators.Action
@@ -76,7 +83,7 @@ export class AuthStore extends VuexDecorators.VuexModule {
   }
 
   @VuexDecorators.Action
-  async reAuthenticate(force = true) {
+  async reAuthenticate(force = true): Promise<void> {
     try {
       const data = await new AuthService().reAuthenticate(force);
       this.context.commit("SET_CURRENT_USER", data.user);
@@ -98,6 +105,17 @@ export class AuthStore extends VuexDecorators.VuexModule {
     } catch (error) {
       this.context.commit("SET_ERROR", error);
       this.context.commit("SET_LOADING", false);
+    }
+  }
+
+  @VuexDecorators.Action
+  async logout(): Promise<void> {
+    try {
+      await new AuthService().logout();
+      router.replace({ name: "Login" });
+      setTimeout(() => this.context.commit("SET_LOGOUT"), 1000);
+    } catch (error) {
+      console.error(error);
     }
   }
 }

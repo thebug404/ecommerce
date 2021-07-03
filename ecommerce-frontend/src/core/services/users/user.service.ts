@@ -22,7 +22,7 @@ export interface User extends Omit<ParamsCreateUser, "password"> {
 }
 
 export class UserService {
-  private service: Service<User>;
+  readonly service: Service<User>;
 
   constructor() {
     this.service = app.service("/api/users");

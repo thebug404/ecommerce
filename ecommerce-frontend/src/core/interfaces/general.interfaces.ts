@@ -8,7 +8,7 @@ export interface FeathersError extends Error {
 export enum Roles {
   Admin = "ADMIN",
   Reader = "READER",
-  Writer = "Writer" 
+  Writer = "WRITER" 
 }
 
 export enum Permissions {

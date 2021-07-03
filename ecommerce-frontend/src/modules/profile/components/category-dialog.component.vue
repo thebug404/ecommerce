@@ -33,7 +33,7 @@ import Component from "vue-class-component";
 
 import { Category } from "../../../core/services/categories/category.service";
 
-import categoryModule from "../../../store/modules/category.module";
+import categoryModule from "../../../store/modules/category.store";
 
 @Component
 export default class CategoryDialogComponent extends Vue {

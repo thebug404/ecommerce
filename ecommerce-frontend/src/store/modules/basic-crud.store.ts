@@ -98,6 +98,19 @@ export abstract class BasicOperationsCrud<
   }
 
   @VuexDecorators.Action
+  async patch(payload: Partial<T>): Promise<void> {
+    try {
+      const entity: T = await this.service.patch(
+        payload._id as string,
+        payload
+      );
+      this.context.commit("SET_CHANGE_ITEM", entity);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  @VuexDecorators.Action
   async remove(id: Id): Promise<void> {
     try {
       const entity = await this.service.remove(id);

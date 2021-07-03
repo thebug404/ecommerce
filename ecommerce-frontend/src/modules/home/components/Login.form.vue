@@ -51,7 +51,7 @@ import Component from "vue-class-component";
 
 import { rules as myRules } from "@/core/dump/rules";
 
-import authStore from "../../../store/modules/auth.modules";
+import authStore from "../../../store/modules/auth.store";
 
 @Component
 export default class LoginFormComponent extends Vue {

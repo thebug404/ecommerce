@@ -1,10 +1,10 @@
 import { Product, ProductService } from "@/core/services/product.service";
-import * as VuexDecorators from "vuex-module-decorators";
+import { Module, getModule } from "vuex-module-decorators";
 import store from "..";
 
 import { BasicOperationsCrud } from "./basic-crud.store";
 
-@VuexDecorators.Module({
+@Module({
   name: "products",
   namespaced: true,
   dynamic: true,
@@ -16,4 +16,4 @@ class ProductStore extends BasicOperationsCrud<Product> {
   }
 }
 
-export default VuexDecorators.getModule(ProductStore);
+export default getModule(ProductStore);

@@ -41,9 +41,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import "vue-router";
 
-import authModules from "../../../store/modules/auth.modules";
-
-authModules;
+import authModules from "../../../store/modules/auth.store";
 
 @Component
 export default class VerifyEmailPage extends Vue {
@@ -59,7 +57,6 @@ export default class VerifyEmailPage extends Vue {
   }
 
   get showTemplate(): Record<string, string> {
-    console.log(authModules.currentUser, authModules.error);
     if (authModules.currentUser)
       return {
         img: "https://image.flaticon.com/icons/png/512/3050/3050426.png",

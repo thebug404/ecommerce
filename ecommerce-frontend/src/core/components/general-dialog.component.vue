@@ -26,7 +26,7 @@ import Component from "vue-class-component";
 
 import { GeneralDialog } from "../../core/interfaces/components.interfaces";
 
-import authModules from "../../store/modules/auth.modules";
+import authModules from "../../store/modules/auth.store";
 
 @Component
 export default class GeneralDialogComponent extends Vue {

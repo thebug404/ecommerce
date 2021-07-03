@@ -23,5 +23,14 @@ export const ProfileRoute: RouteConfig = {
       },
       component: () => import("./pages/Categories.page.vue"),
     },
+    {
+      path: "users",
+      name: "Users",
+      meta: {
+        requiresAuth: true,
+        roles: [Roles.Admin],
+      },
+      component: () => import("./pages/Users.page.vue"),
+    },
   ],
 };

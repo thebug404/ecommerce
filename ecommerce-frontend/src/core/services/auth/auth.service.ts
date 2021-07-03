@@ -1,6 +1,7 @@
-import app from "@/core/config/feathers";
-import { FeathersError } from "@/core/interfaces/general.interfaces";
 import { Service } from "@feathersjs/feathers";
+import app from "@/core/config/feathers";
+
+import { FeathersError } from "@/core/interfaces/general.interfaces";
 import { User } from "../users/user.service";
 
 export interface Credentials {
@@ -38,11 +39,15 @@ export class AuthService {
     const service: Service<any> = app.service("authManagement");
     return await service.create({
       action: "verifySignupLong",
-      value: token
+      value: token,
     });
   }
 
   async reAuthenticate(force = true): Promise<AuthResult> {
-    return await app.reAuthenticate(force) as AuthResult;
+    return (await app.reAuthenticate(force)) as AuthResult;
+  }
+
+  async logout(): Promise<AuthResult> {
+    return (await app.authentication.logout()) as AuthResult;
   }
 }

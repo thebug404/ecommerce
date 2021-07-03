@@ -68,7 +68,7 @@ import { rules as myRules } from "@/core/dump/rules";
 
 import { ParamsCreateUser } from "../../../core/services/users/user.service";
 
-import authStore from "../../../store/modules/auth.modules";
+import authStore from "../../../store/modules/auth.store";
 
 @Component
 export default class RegisterFormComponent extends Vue {

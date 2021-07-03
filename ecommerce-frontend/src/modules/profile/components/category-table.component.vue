@@ -38,7 +38,7 @@ import Component from "vue-class-component";
 
 import { Category } from "../../../core/services/categories/category.service";
 
-import categoryModule from "../../../store/modules/category.module";
+import categoryModule from "../../../store/modules/category.store";
 
 const CategoryProps = Vue.extend({
   props: { categories: Array },
@@ -47,7 +47,7 @@ const CategoryProps = Vue.extend({
 @Component
 export default class CategoryTableComponent extends CategoryProps {
   openDialogEdit(category: Category): void {
-    categoryModule.openDialog(category);
+    categoryModule.showDialog(category);
   }
 
   deleteCategory(id: string): void {

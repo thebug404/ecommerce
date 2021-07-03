@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-toolbar elevation="0">
+    <v-toolbar
+      v-permissions="['ADMIN', 'WRITER']"
+      elevation="0"
+      color="transparent"
+    >
       <v-spacer />
       <v-btn @click="showDialog" text color="primary">
         <v-icon>mdi-plus</v-icon>

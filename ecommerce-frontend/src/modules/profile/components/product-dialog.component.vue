@@ -74,7 +74,7 @@ import { Category } from "../../../core/services/categories/category.service";
 import { rules as myRules } from "../../../core/dump/rules";
 import { Product } from "../../../core/services/product.service";
 
-import categoryModule from "../../../store/modules/category.module";
+import categoryModule from "../../../store/modules/category.store";
 import productStore from "../../../store/modules/product.store";
 
 @Component
@@ -83,7 +83,7 @@ export default class ProductDialogComponent extends Vue {
   valid = false;
 
   created(): void {
-    categoryModule.getList();
+    categoryModule.find({});
   }
 
   save(): void {
@@ -104,7 +104,7 @@ export default class ProductDialogComponent extends Vue {
   }
 
   get categories(): Array<Category> {
-    return categoryModule.categories;
+    return categoryModule.items;
   }
 
   get dialog(): boolean {

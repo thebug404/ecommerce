@@ -17,9 +17,10 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+
 import { Category } from "../../../core/services/categories/category.service";
 
-import categoryStore from "../../../store/modules/category.module";
+import categoryStore from "../../../store/modules/category.store";
 
 import CategoryDialogComponent from "../components/category-dialog.component.vue";
 import CategoryTableComponent from "../components/category-table.component.vue";
@@ -32,15 +33,15 @@ import CategoryTableComponent from "../components/category-table.component.vue";
 })
 export default class CategoriesPage extends Vue {
   created(): void {
-    categoryStore.getList();
+    categoryStore.find({});
   }
 
   openDialog(): void {
-    categoryStore.openDialog({});
+    categoryStore.showDialog({});
   }
 
   get categories(): Array<Category> {
-    return categoryStore.categories;
+    return categoryStore.items;
   }
 }
 </script>
