@@ -64,7 +64,7 @@ export default class ProfileLayout extends Vue {
     {
       path: "Categories",
       icon: "mdi-format-list-bulleted-square",
-      roles: [Roles.Admin],
+      roles: [Roles.Admin, Roles.Writer],
       color: "success",
       text: "Categorias",
     },

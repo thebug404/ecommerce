@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-toolbar elevation="0">
+    <v-toolbar elevation="0" color="transparent">
       <v-spacer />
       <v-btn @click="openDialog" text color="primary">
         <v-icon>mdi-plus</v-icon>
-        <span class="ml-3">Agregar categoria.</span>
+        <span class="ml-3">Nueva categoria</span>
       </v-btn>
     </v-toolbar>
     <v-container>
@@ -34,6 +34,9 @@ import CategoryTableComponent from "../components/category-table.component.vue";
 export default class CategoriesPage extends Vue {
   created(): void {
     categoryStore.find({});
+    categoryStore.watchStateEntity("created"),
+      categoryStore.watchStateEntity("updated");
+    categoryStore.watchStateEntity("removed");
   }
 
   openDialog(): void {

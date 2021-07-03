@@ -8,7 +8,7 @@
       <v-spacer />
       <v-btn @click="showDialog" text color="primary">
         <v-icon>mdi-plus</v-icon>
-        <span class="ml-3">Agregar producto</span>
+        <span class="ml-3">Nuevo producto</span>
       </v-btn>
     </v-toolbar>
 
@@ -43,6 +43,9 @@ import ProductDialogComponent from "../components/product-dialog.component.vue";
 export default class ProductsPage extends Vue {
   created(): void {
     productStore.find({});
+    productStore.watchStateEntity("created");
+    productStore.watchStateEntity("removed");
+    productStore.watchStateEntity("updated");
   }
 
   showDialog(): void {

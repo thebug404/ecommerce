@@ -1,12 +1,12 @@
-import * as VuexDecorators from "vuex-module-decorators";
 import { Query, Paginated, Service, Id } from "@feathersjs/feathers";
+import * as VuexDecorators from "vuex-module-decorators";
 
-type EntityKey = {
-  _id: string;
-};
+import * as GeneralStore from "../interfaces/store.interfaces";
+
+import { standarizePromise } from "@/core/helpers/standarizePromise";
 
 export abstract class BasicOperationsCrud<
-  T extends EntityKey
+  T extends GeneralStore.EntityKey
 > extends VuexDecorators.VuexModule {
   editedItem: Partial<T> = {};
   editedIndex = -1;
@@ -39,9 +39,11 @@ export abstract class BasicOperationsCrud<
   }
 
   @VuexDecorators.Mutation
-  REMOVE_ITEM(id: Id): void {
-    const index: number = this.items.findIndex((item) => item._id === id);
-    this.items.splice(index, 1);
+  REMOVE_ITEM(payload: T): void {
+    const index: number = this.items.findIndex(
+      (item) => item._id === payload._id
+    );
+    if (index >= 0) this.items.splice(index, 1);
   }
 
   @VuexDecorators.Mutation
@@ -69,54 +71,50 @@ export abstract class BasicOperationsCrud<
 
   @VuexDecorators.Action
   async create(data: Partial<T>): Promise<void> {
-    try {
-      const entity: T = await this.service.create(data);
-      this.context.commit("SET_NEW_ITEM", entity);
-    } catch (error) {
-      console.error(error);
-    }
+    const [result, error] = await standarizePromise(this.service.create(data));
+    if (!result) return console.error(error);
+    this.context.commit("SET_NEW_ITEM", result);
   }
 
   @VuexDecorators.Action
   async find(query: Query): Promise<void> {
-    try {
-      const result = (await this.service.find(query)) as Paginated<T>;
-      result.data.forEach((item) => this.context.commit("SET_NEW_ITEM", item));
-    } catch (error) {
-      console.error(error);
-    }
+    const [result, error] = await standarizePromise(
+      this.service.find(query) as Promise<Paginated<T>>
+    );
+    if (!result) return console.log(error);
+    result.data.forEach((item) => this.context.commit("SET_NEW_ITEM", item));
   }
 
   @VuexDecorators.Action
   async update(payload: T): Promise<void> {
-    try {
-      const entity = await this.service.update(payload._id, payload);
-      this.context.commit("SET_CHANGE_ITEM", entity);
-    } catch (error) {
-      console.error(error);
-    }
+    const [entity, error] = await standarizePromise(
+      this.service.update(payload._id, payload)
+    );
+    if (!entity) return console.error(error);
+    this.context.commit("SET_CHANGE_ITEM", entity);
   }
 
   @VuexDecorators.Action
   async patch(payload: Partial<T>): Promise<void> {
-    try {
-      const entity: T = await this.service.patch(
-        payload._id as string,
-        payload
-      );
-      this.context.commit("SET_CHANGE_ITEM", entity);
-    } catch (error) {
-      console.error(error);
-    }
+    const [entity, error] = await standarizePromise(
+      this.service.patch(payload._id as string, payload)
+    );
+    if (!entity) return console.error(error);
+    this.context.commit("SET_CHANGE_ITEM", entity);
   }
 
   @VuexDecorators.Action
   async remove(id: Id): Promise<void> {
-    try {
-      const entity = await this.service.remove(id);
-      this.context.commit("REMOVE_ITEM", entity._id);
-    } catch (error) {
-      console.error(error);
-    }
+    const [entity, error] = await standarizePromise(this.service.remove(id));
+    if (!entity) return console.error(error);
+    this.context.commit("REMOVE_ITEM", entity._id);
+  }
+
+  @VuexDecorators.Action
+  watchStateEntity(event: GeneralStore.TypesActions): void {
+    const action = GeneralStore.events[event];
+    this.service.on(action.event, (payload: T) =>
+      this.context.commit(action.commit, payload)
+    );
   }
 }

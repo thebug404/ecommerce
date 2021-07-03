@@ -51,6 +51,8 @@ export default class UsersPage extends Vue {
 
   created(): void {
     userStore.find({});
+    userStore.watchStateEntity("created");
+    userStore.watchStateEntity("patched");
   }
 
   save(data: User): void {
