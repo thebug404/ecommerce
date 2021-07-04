@@ -3,6 +3,27 @@
 Es una aplicacion con Comunicacion en Tiempo Real, esta desarollado con [Node.js](https://nodejs.org), [Feathers.js](https://feathersjs.com), [Vue.js](https://vuejs.org)
 y otras tecnologias adicionales.
 
+## Administrador
+Este usuario se caracteriza por tener control total sobre lo que sucede en la aplicacion.
+> Nota: El administrador es establecido al primer usuario en **registrarse**, pero luego puede haber mas si asi lo desea el administrador/administradores.
+
+Actividades disponibles para los usuarios administradores:
+1. Gestion de usuarios.
+2. Gestion de productos.
+3. Gestion de categorias.
+
+## Escritores
+
+Actividades disponibles para los usuarios escritores:
+1. Gestion de productos.
+2. Gestion de categorias.
+
+## Lectores
+Este es el rol por defecto cuando un usuario se **Registra** en la aplicacion.
+
+Actividades disponibles para los usuarios lectores:
+1. Visualizacion de los productos.
+
 ## Prerrequisitos
 1. Tener instalado [Node.js](https://nodejs.org).
 2. Tener instalado [MongoDB](https://www.mongodb.com/try/download/community)
