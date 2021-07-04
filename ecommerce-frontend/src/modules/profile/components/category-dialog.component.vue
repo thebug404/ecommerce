@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="370">
+  <v-dialog v-model="dialog" width="370" persistent>
     <v-card class="pa-5">
       <v-form ref="form">
         <v-text-field
@@ -39,6 +39,7 @@ import categoryModule from "../../../store/modules/category.store";
 export default class CategoryDialogComponent extends Vue {
   colors = [
     { title: "Azul", color: "primary" },
+    { title: "Rojo", color: "error" },
     { title: "Amarillo", color: "warning" },
     { title: "Verde", color: "success" },
     { title: "Celeste", color: "info" },

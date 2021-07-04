@@ -8,3 +8,6 @@ Content-Type: application/json
     "email": "",
     "password": ""
 }
+
+### Get list users
+GET http://localhost:3030/api/users

@@ -79,7 +79,7 @@ export abstract class BasicOperationsCrud<
   @VuexDecorators.Action
   async find(query: Query): Promise<void> {
     const [result, error] = await standarizePromise(
-      this.service.find(query) as Promise<Paginated<T>>
+      this.service.find({ query }) as Promise<Paginated<T>>
     );
     if (!result) return console.log(error);
     result.data.forEach((item) => this.context.commit("SET_NEW_ITEM", item));
