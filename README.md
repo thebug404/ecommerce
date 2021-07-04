@@ -1,28 +1,48 @@
 # OneGroup
+
 <img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625347866/App_banners/Dashboard_onegroup_bps9ip.png" width="100%">
+
 Es una aplicacion con Comunicacion en Tiempo Real, esta desarollado con [Node.js](https://nodejs.org), [Feathers.js](https://feathersjs.com), [Vue.js](https://vuejs.org)
 y otras tecnologias adicionales.
 
-## Administrador
-Este usuario se caracteriza por tener control total sobre lo que sucede en la aplicacion.
+## Roles
+
+1. **Administrador**: Este usuario se caracteriza por tener control total sobre lo que sucede en la aplicacion.
 > Nota: El administrador es establecido al primer usuario en **registrarse**, pero luego puede haber mas si asi lo desea el administrador/administradores.
 
-Actividades disponibles para los usuarios administradores:
-1. Gestion de usuarios.
-2. Gestion de productos.
-3. Gestion de categorias.
+2. **Escritor**: Este usuario tiene permitido la manipulacion de los productos y categorias.
+3. **Lectores**: Este usuario solo puede visualizar los productos. Ademas es el rol que se añade a los usuarios registrados.
 
-## Escritores
+## Gestion de productos.
+En esta seccion se muestran todos los productos disponibles, estos puedes ser visualizados por todos los usuarios autenticados,
+pero solo pueden ser ingresados, editados y eliminados por los **Adminitradores** y **Escritores**
 
-Actividades disponibles para los usuarios escritores:
-1. Gestion de productos.
-2. Gestion de categorias.
+#### Campos de los productos.
 
-## Lectores
-Este es el rol por defecto cuando un usuario se **Registra** en la aplicacion.
++ Title: Titulo del producto.
++ Description: Breve descripcion del producto.
++ Categories: Lista de categorias relacionadas al producto (max 3)
++ Price: Precio del producto.
++ Rating: Popularidad del producto (generado automaticamente del 1 - 5).
 
-Actividades disponibles para los usuarios lectores:
-1. Visualizacion de los productos.
+<img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625388981/App_banners/products-page_jgjjzt.png" width="100%">
+
+## Gestion de usuarios.
+<p>Solo tendra acceso los usuarios administradores, aqui se muestran todos los usuarios registrados.</p>
+
+#### Campos de los usuarios.
+
++ Nombres: Nombres de los usuarios.
++ Apellidos: Apellidos de los usuarios.
++ Email: Correo electronico del usuario.
++ Role: Tipo de rol dentro de la app (ADMIN, WRITER, READER).
++ Verificado: Muestra si la cuenta esta verificada.
+
+<img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625387744/App_banners/users-page_aqs1j9.png" width="100%">
+
+## Gestion de categorias.
+<p>En esta pagina solo tendran acceso aquellos usuarios cuyo rol dentro la aplicacion sea ADMIN o WRITE</p>
+<img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625387744/App_banners/categories-page_pcpcfo.png" width="100%">
 
 ## Prerrequisitos
 1. Tener instalado [Node.js](https://nodejs.org).
