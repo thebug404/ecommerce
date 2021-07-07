@@ -5,7 +5,7 @@
  </a>
 
 Es una aplicacion con Comunicacion en Tiempo Real, esta desarollado con [Node.js](https://nodejs.org), [Feathers.js](https://feathersjs.com), [Vue.js](https://vuejs.org)
-y otras tecnologias adicionales.
+y otras tecnologias adicionales. Si deseas conocer su funcionamiento, da clic en el enlace [onegroup-app](https://onegroup-app.herokuapp.com/) o da clic en la imagen.
 
 ## Roles
 
