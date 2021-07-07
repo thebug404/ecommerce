@@ -1,6 +1,8 @@
 # OneGroup
 
-<img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625347866/App_banners/Dashboard_onegroup_bps9ip.png" width="100%">
+<a href="https://onegroup-app.herokuapp.com/">
+  <img src="https://res.cloudinary.com/dlkfpx8lb/image/upload/v1625347866/App_banners/Dashboard_onegroup_bps9ip.png" width="100%">
+ </a>
 
 Es una aplicacion con Comunicacion en Tiempo Real, esta desarollado con [Node.js](https://nodejs.org), [Feathers.js](https://feathersjs.com), [Vue.js](https://vuejs.org)
 y otras tecnologias adicionales.
