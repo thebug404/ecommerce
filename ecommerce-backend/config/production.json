@@ -28,6 +28,7 @@
     },
     "mongodb": "MONGODB_URI",
     "frontend_uri": "URI",
+    "sender_email": "SENDER_EMAIL",
     "mailer": {
         "host": "MAIL_HOST",
         "port": "MAIL_PORT",

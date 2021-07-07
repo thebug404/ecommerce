@@ -21,7 +21,6 @@
     "@feathersjs/socketio": "^4.5.11",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
-    "feathers-authentication-management": "^3.1.0",
     "feathers-authentication-management-ts": "^2.1.2",
     "feathers-hooks-common": "^5.0.6",
     "feathers-mongoose": "^8.3.3",

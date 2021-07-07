@@ -1,10 +1,9 @@
 import * as authmanagement from "feathers-authentication-management-ts";
 import { Application } from "@feathersjs/express";
+import { Service } from "@feathersjs/feathers";
+import { SendMailOptions } from "nodemailer";
 
-import { Mailer } from "../mailer/strategies/VerificationEmail";
-import { User } from "../users/user.controller";
-
-import { strategies } from "../mailer/strategies/index.strategies";
+import { strategies } from "./strategies/index.strategies";
 
 export function notifier(
     app: Application
@@ -14,11 +13,18 @@ export function notifier(
         notifier: function(
             type: authmanagement.Types,
             user: authmanagement.User
-        ) {
-            const strategy = strategies(app)[type] as Mailer | undefined;
-            strategy?.send(user as User)
-              .then(() => console.log("Email sent successfully"))
-              .catch(error => console.error(error));
+        ): void {
+            const senderEmail: string = app.get("sender_email");
+            const host: string = app.get("frontend_uri");
+
+            const mailer: Service<SendMailOptions> = app.service("/api/mailer");
+
+            const strategy = strategies[type];
+            if (!strategy) return console.error("Strategy not found.");
+
+            mailer.create(strategy({ user, host, senderEmail }))
+                .then(() => console.log("Email sent successfully."))
+                .catch(console.error);
         }
     };
 }

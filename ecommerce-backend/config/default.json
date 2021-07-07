@@ -28,13 +28,14 @@
         }
     },
     "mongodb": "mongodb://localhost/onegroup",
-    "frontend_uri": "http://localhost:3030",
+    "frontend_uri": "http://localhost:8080",
+    "sender_email": "abc@support.com",
     "mailer": {
-        "host": "",
-        "port": 1234,
+        "host": "smtp.mailtrap.io",
+        "port": 2525,
         "auth": {
-          "user": "",
-          "pass": ""
+          "user": "f233cb54825323",
+          "pass": "c59991fd412975"
         }
     }
 }
