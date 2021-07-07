@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon src",
-    "start": "node /dist",
+    "start": "node ./dist",
     "postinstall": "tsc"
   },
   "keywords": [],
@@ -30,7 +30,8 @@
     "mongoose": "^5.13.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.6.2",
-    "npm": "^7.19.1"
+    "npm": "^7.19.1",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@types/config": "^0.0.39",

@@ -3,7 +3,8 @@ import auth from "@feathersjs/authentication-client";
 import socketio from "@feathersjs/socketio-client";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3030");
+// add the url of the server.
+const socket = io("/");
 
 const app = feathers()
   .configure(socketio(socket))

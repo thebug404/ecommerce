@@ -1,5 +1,6 @@
 ecommerce-backend/node_modules
 ecommerce-backend/request
+ecommerce-backend/dist
 
 ecommerce-frontend/.DS_Store
 ecommerce-frontend/node_modules
