@@ -31,11 +31,11 @@
     "frontend_uri": "http://localhost:8080",
     "sender_email": "abc@support.com",
     "mailer": {
-        "host": "smtp.mailtrap.io",
-        "port": 2525,
+        "host": "",
+        "port": 1234,
         "auth": {
-          "user": "f233cb54825323",
-          "pass": "c59991fd412975"
+          "user": "",
+          "pass": ""
         }
     }
 }
