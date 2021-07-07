@@ -28,10 +28,10 @@
         }
     },
     "mongodb": "mongodb://localhost/onegroup",
-    "frontend_uri": "http://localhost:8080",
+    "frontend_uri": "http://localhost:3030",
     "mailer": {
         "host": "",
-        "port": 0,
+        "port": 1234,
         "auth": {
           "user": "",
           "pass": ""
