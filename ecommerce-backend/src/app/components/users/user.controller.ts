@@ -1,6 +1,6 @@
+import { User as AuthUser } from "feathers-authentication-management-ts";
 import { MongooseServiceOptions, Service } from "feathers-mongoose";
 import { Application } from "@feathersjs/express";
-import { User as AuthUser } from "feathers-authentication-management-ts";
 
 export interface User extends AuthUser {
     _id: string;
